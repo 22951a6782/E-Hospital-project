@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centers of Excellence</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('design.jpeg') no-repeat center center/cover;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            background-color: whitesmoke; 
+        }
+        .title {
+            background-color: dimgray;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        .title h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .return-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .book-appointment {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .return-home button,
+        .book-appointment button {
+            background-color: #0044cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .return-home button:hover,
+        .book-appointment button:hover {
+            background-color: #003399;
+        }
+        .specialties {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            margin: auto; /* Center align the specialties */
+            max-width: 1200px; /* Adjust max-width as needed */
+        }
+        .specialty {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .specialty:nth-child(even) {
+            background-color: #c4e5c6; /* Alternate color: light green */
+        }
+        .transition-section {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .transition-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .transition-images img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease-in-out;
+            cursor: pointer;
+        }
+        .transition-images img:hover {
+            transform: scale(1.1);
+        }
+        .transition-images p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #555;
+        }
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>Centers of Excellence</h1>
+        <div class="return-home">
+            <button onclick="window.location.href='hospital.html'">Return to Home</button>
+        </div>
+        <div class="book-appointment">
+            <button onclick="window.location.href='book-appointment.html'">Book Appointment</button>
+        </div>
+    </div>
+    <section class="transition-section">
+        <h2>Explore Our Specialties</h2>
+        <div class="transition-images">
+            <div>
+                <img src="liver.jpeg" alt="Liver">
+                <p>Liver Care 24/7</p>
+            </div>
+            <div>
+                <img src="heart.jpeg" alt="Heart">
+                <p>Heart Surgery Safely 24/7</p>
+            </div>
+            <div>
+                <img src="brain.jpeg" alt="Brain">
+                <p>Neurology Expertise</p>
+            </div>
+            <div>
+                <img src="kidney.jpeg" alt="Kidney">
+                <p>Kidney Health Center</p>
+            </div>
+            <div>
+                <img src="stethoscope.jpeg" alt="Stethoscope">
+                <p>Comprehensive Health Checkups</p>
+            </div>
+        </div>
+    </section>
+    <section class="specialties">
+        <div class="specialty">
+            <h2>Cancer Center</h2>
+            <p>Dr. Vasala Pragvamsh<br> Phone: +91 12345 67890</p>
+        </div>
+        <div class="specialty">
+          <h2>Pediatrics</h2>
+          <p>Dr. Puneeth Guptha <br> Phone: +91 99515 02543</p>
+      </div>
+        <div class="specialty">
+            <h2>Cardiology Center</h2>
+            <p>Dr. Perala Pranitha <br> Phone: +91 93138 99123</p>
+        </div>
+        <div class="specialty">
+            <h2>Neurology Center</h2>
+            <p>Dr. Ravali Tallapelly<br> Phone: +91 70138 01227</p>
+        </div>
+        <div class="specialty">
+            <h2>Mother and Child Center</h2>
+            <p>Dr. Saideep Rangoni <br> Phone: +91 80745 75490</p>
+        </div>
+        <div class="specialty">
+            <h2>Orthopedic Center</h2>
+            <p>Dr. Nihanth Bhargav<br> Phone: +91 45678 90123</p>
+        </div>
+        <div class="specialty">
+            <h2>Liver Center</h2>
+            <p>Dr. Swaroop <br> Phone: +91 56789 01234</p>
+        </div>
+        <div class="specialty">
+            <h2>Spine Surgery Center</h2>
+            <p>Dr. Phusuk vangdu<br> Phone: +91 66223 55432</p>
+        </div>
+        <div class="specialty">
+            <h2>Organ Transplant Center</h2>
+            <p>Dr. Srikar Reddy<br> Phone: +91 74632 98778</p>
+        </div>
+        <div class="specialty">
+            <h2>Dentistry Center</h2>
+            <p>Dr. Dappu Rishi <br> Phone: +91 98903 47063</p>
+        </div>
+        <div class="specialty">
+            <h2>Dermatology Center</h2>
+            <p>Dr. Parsa Santosh <br> Phone: +91 12389 45600</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 E-Hospital Management. All rights reserved.</p>
+    </footer>
+</body>
+</html>
