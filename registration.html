@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('form.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            padding: 10px;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+        .container .title {
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+        .container .title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            background: #3498db;
+        }
+        .content form .user-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0 12px 0;
+        }
+        form .user-details .input-box {
+            margin-bottom: 15px;
+            width: calc(100% / 2 - 20px);
+        }
+        form .user-details .input-box .details {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        form .user-details .input-box input {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+        form .user-details .input-box input:focus,
+        form .user-details .input-box input:valid {
+            border-color: #3498db;
+        }
+        form .gender-details .gender-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        form .category {
+            display: flex;
+            width: 80%;
+            margin: 14px 0;
+            justify-content: space-between;
+        }
+        form .category label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        form .category label .dot {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background: #d9d9d9;
+            border: 5px solid transparent;
+            transition: all 0.3s ease;
+        }
+        #dot-1:checked ~ .category label .one,
+        #dot-2:checked ~ .category label .two,
+        #dot-3:checked ~ .category label .three {
+            background: #3498db;
+            border-color: #d9d9d9;
+        }
+        form .button {
+            height: 45px;
+            margin: 35px 0;
+        }
+        form .button input {
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #3498db;
+        }
+        form .button input:hover {
+            background: #2570a6;
+        }
+        form .register-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        form .register-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        form .register-link a:hover {
+            text-decoration: underline;
+        }
+        .home-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
+        .quote {
+            font-size: 18px;
+            font-style: italic;
+            color: #777;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="hospital.html" class="home-link">Return to Home</a>
+    <div class="container">
+        <div class="title">People's Hospital</div>
+        <p class="quote">"We strive to provide the best patient care."</p>
+        <div class="content">
+            <form action="registration_handler.php" method="POST">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Name</span>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Age</span>
+                        <input type="number" id="age" name="age" placeholder="Enter your age" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Gender</span>
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>Choose your gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Date of Birth</span>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Medical Problems</span>
+                        <textarea id="problems" name="problems" placeholder="Describe your medical problems" required></textarea>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Username</span>
+                        <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="password" id="password" name="password" placeholder="Choose a password" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+                <div class="register-link">
+                    Already a patient? <a href="login.html">Login here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
