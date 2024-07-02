@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment - E-Hospital Management</title>
+    <style>
+        /* Additional CSS styles specific to this page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: whitesmoke; 
+        }
+        header {
+            background-color: dimgray;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .appointment-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .appointment-container h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: dimgray;
+        }
+        .appointment-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .return-home {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .appointment-container input,
+        .appointment-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .appointment-container button {
+            background-color: #0044cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .appointment-container button:hover {
+            background-color: #003399;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="return-home" onclick="window.location.href='hospital.html'">Return to Home</button>
+        <h1>Book an Appointment</h1>
+    </header>
+    <div class="appointment-container">
+        <h2>Schedule Your Appointment</h2>
+        <form id="appointmentForm">
+            <label for="patientName">Patient Name</label>
+            <input type="text" id="patientName" name="patientName" required>
+            
+            <label for="patientEmail">Email</label>
+            <input type="email" id="patientEmail" name="patientEmail" required>
+            
+            <label for="doctor">Select Doctor</label>
+            <select id="doctor" name="doctor" required>
+                <option value="" disabled selected>Choose Doctor</option>
+                <option value="Dr. Vasala Pragvamsh">Dr. Vasala Pragvamsh (Cancer Center)</option>
+                <option value="Dr. Puneeth Guptha">Dr. Puneeth Guptha (Pediatrics)</option>
+                <option value="Dr. Perala Pranitha">Dr. Perala Pranitha (Cardiology)</option>
+                <option value="Dr. Ravali Tallapelly">Dr. Ravali Tallapelly (Neurology)</option>
+                <option value="Dr. Saideep Rangoni">Dr. Saideep Rangoni (Mother and Child Center)</option>
+                <option value="Dr. Nihanth Bhargav">Dr. Nihanth Bhargav (Orthopedic)</option>
+                <option value="Dr. Swaroop">Dr. Swaroop (Liver Center)</option>
+                <option value="Dr. Phusuk Vangdu">Dr. Phusuk Vangdu (Spine Surgery)</option>
+                <option value="Dr. Srikar Reddy">Dr. Srikar Reddy (Organ Transplant)</option>
+                <option value="Dr. Dappu Rishi">Dr. Dappu Rishi (Dentistry)</option>
+                <option value="Dr. Parsa Santosh">Dr. Parsa Santosh (Dermatology)</option>
+            </select>
+            
+            <label for="appointmentDate">Appointment Date</label>
+            <input type="date" id="appointmentDate" name="appointmentDate" required>
+            
+            <label for="appointmentTime">Appointment Time</label>
+            <input type="time" id="appointmentTime" name="appointmentTime" required>
+            
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 E-Hospital Management. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Appointment booked successfully!');
+            // In a real application, you would send this data to a backend server for processing and storage
+        });
+    </script>
+</body>
+</html>
