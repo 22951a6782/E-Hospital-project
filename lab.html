@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People's Hospital Lab Tests and Reports</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            animation: zoomIn 0.5s ease-out;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .test-item {
+            position: relative;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .test-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 8px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1;
+        }
+
+        .test-item:hover .description {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            animation: fadeInLeft 0.5s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        form {
+            margin-top: 16px;
+            animation: fadeInRight 0.5s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+      <button class="return-home" onclick="window.location.href='hospital.html'">Return to Home</button>
+        <h1>Welcome to People's Hospital Lab Tests and Reports</h1>
+    </header>
+    <main>
+        <section id="test-list">
+            <h2>Available Lab Tests and Their Purposes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <strong>Complete Blood Count (CBC)</strong>
+                    <div class="description">Evaluates overall health and detects a wide range of disorders.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Basic Metabolic Panel (BMP)</strong>
+                    <div class="description">Assesses kidney function, electrolyte levels, and blood sugar levels.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Lipid Panel</strong>
+                    <div class="description">Measures cholesterol levels to assess the risk of heart disease.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Thyroid Stimulating Hormone (TSH)</strong>
+                    <div class="description">Evaluates thyroid function.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Urinalysis</strong>
+                    <div class="description">Checks for urinary tract infections, kidney diseases, and diabetes.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Liver Function Tests (LFTs)</strong>
+                    <div class="description">Measures liver enzymes and proteins to assess liver function.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Blood Glucose (Fasting and Random)</strong>
+                    <div class="description">Measures blood sugar levels to diagnose diabetes.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Hemoglobin A1c (HbA1c)</strong>
+                    <div class="description">Monitors long-term blood sugar levels in diabetes management.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Prothrombin Time (PT)</strong>
+                    <div class="description">Measures how long it takes for blood to clot to assess bleeding risks.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Activated Partial Thromboplastin Time (aPTT)</strong>
+                    <div class="description">Evaluates blood clotting function.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Electrolyte Panel (Sodium, Potassium, Chloride, Bicarbonate)</strong>
+                    <div class="description">Assesses electrolyte balance.</div>
+                </div>
+                <div class="test-item">
+                    <strong>C-reactive Protein (CRP)</strong>
+                    <div class="description">Indicates inflammation in the body.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Blood Culture</strong>
+                    <div class="description">Detects infections in the bloodstream.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Serum Iron and Total Iron-Binding Capacity (TIBC)</strong>
+                    <div class="description">Evaluates iron levels and iron-binding capacity.</div>
+                </div>
+                <div class="test-item">
+                    <strong>Thyroid Function Tests (T3, T4, Free T4, TSH)</strong>
+                    <div class="description">Assesses thyroid hormone levels.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule-form">
+            <h2>Schedule Your Lab Test</h2>
+            <form id="schedule-test">
+                <label for="test">Select Lab Test:</label>
+                <select id="test" name="test" required>
+                    <option value="">Select Test</option>
+                    <option value="CBC">Complete Blood Count (CBC)</option>
+                    <option value="BMP">Basic Metabolic Panel (BMP)</option>
+                    <option value="Lipid Panel">Lipid Panel</option>
+                    <option value="TSH">Thyroid Stimulating Hormone (TSH)</option>
+                    <option value="Urinalysis">Urinalysis</option>
+                    <option value="LFTs">Liver Function Tests (LFTs)</option>
+                    <option value="Blood Glucose">Blood Glucose (Fasting and Random)</option>
+                    <option value="HbA1c">Hemoglobin A1c (HbA1c)</option>
+                    <option value="PT">Prothrombin Time (PT)</option>
+                    <option value="aPTT">Activated Partial Thromboplastin Time (aPTT)</option>
+                    <option value="Electrolyte Panel">Electrolyte Panel (Sodium, Potassium, Chloride, Bicarbonate)</option>
+                    <option value="CRP">C-reactive Protein (CRP)</option>
+                    <option value="Blood Culture">Blood Culture</option>
+                    <option value="Serum Iron and TIBC">Serum Iron and Total Iron-Binding Capacity (TIBC)</option>
+                    <option value="Thyroid Function Tests">Thyroid Function Tests (T3, T4, Free T4, TSH)</option>
+                </select><br><br>
+                <label for="datetime">Preferred Date and Time:</label>
+                <input type="datetime-local" id="datetime" name="datetime" required><br><br>
+                <label for="address">Home Address:</label>
+                <input type="text" id="address" name="address" required><br><br>
+                <button type="submit">Schedule Lab Test</button>
+            </form>
+        </section>
+
+        <section id="search-form">
+            <h2>Search for Your Lab Report</h2>
+            <form id="report-search">
+                <label for="mrno">Medical Record Number (MRNO):</label>
+                <input type="text" id="mrno" name="mrno" required><br><br>
+                <label for="billno">Bill No.:</label>
+                <input type="text" id="billno" name="billno" required><br><br>
+                <button type="submit">Search and Download Report</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 People's Hospital. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('schedule-test').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const test = document.getElementById('test').value;
+            const datetime = document.getElementById('datetime').value;
+            const address = document.getElementById('address').value;
+
+            // Here you would typically send this data to your server-side script for further processing
+            console.log(`Scheduled ${test} on ${datetime} at ${address}`);
+
+            // For demonstration purposes, reset the form after submission
+            document.getElementById('schedule-test').reset();
+        });
+
+        document.getElementById('report-search').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const mrno = document.getElementById('mrno').value;
+            const billno = document.getElementById('billno').value;
+
+            // Replace with your actual server-side script URL for PDF generation
+            const url = `generate_pdf.php?mrno=${mrno}&billno=${billno}`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.blob();
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'lab_report.pdf'; // Set the filename for the downloaded file
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        });
+    </script>
+</body>
+</html>
+
