@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Hospital Management</title>
+    <link rel="stylesheet" href="hospital.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        /* Additional CSS styles specific to this page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: whitesmoke; 
+        }
+        nav {
+            background-color: dimgray;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end; 
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-in-out;
+        }
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .hospital-name {
+            position: absolute;
+            top: 50px;
+            left: 25%;
+            transform: translateX(-60%);
+            z-index: 1000;
+        }
+        .hospital-name h2 {
+            font-size: 4.7em;
+            font-weight: bold;
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        header {
+            background: url('hospital.jpeg') no-repeat center center/cover;
+            color: cornsilk;
+            background-size: cover;
+            text-align: center;
+            padding: 100px 0;
+            height: calc(100vh - 40px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        header p {
+            font-size: 1.5em;
+        }
+        header .quote {
+            font-size: 1.2em;
+            margin-top: 20px;
+            font-style: italic;
+            color: black;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .about-section {
+            background-color: #f9f9f9;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .address-section {
+            background-color: #e0e0e0;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .contact-info p {
+            margin: 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .quote-container {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            text-align: center;
+            z-index: 100;
+        }
+        .quote-container .quote-text {
+            font-size: 1.5em;
+            font-style: italic;
+            color: white;
+            opacity: 0;
+            animation: fadeInOut 6s linear infinite;
+        }
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <nav>   
+        <div class="hospital-name">
+            <h2>People's Hospital</h2>
+        </div>
+        <ul>
+        
+            <li><a href="gallery.html">Gallery</a></li>
+            
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="galleryofpatients.html">Feedback</a></li>
+        </ul>
+        <select id="pageSelect1" onchange="navigateToPage1()">
+            <option value="" disabled selected>Patient Details</option>
+            <option value="lab.html">Lab Tests & Reports</option>
+            
+        </select>
+        <select id="pageSelect2" onchange="navigateToPage2()">
+            <option value="" disabled selected>Book Appointment</option>
+            <option value="book-appointment.html">Book Appointment</option>
+            <option value="e-pharmacy.html">e-Pharmacy</option>
+            <option value="centers_of_excellence.html">Specialities</option>
+        </select>
+        <select id="pageSelect3" onchange="navigateToPage3()">
+            <option value="" disabled selected>Patient Registration</option>
+            <option value="registration.html">Patient Registration</option>
+            <option value="login.html">Patient Login</option>
+            <option value="request.html">Request a Demo</option>
+        </select>
+    </nav>
+    <header>
+        <div class="quote-container">
+            <p class="quote-text">"The greatest wealth is health." - Virgil</p>
+        </div>
+        <h1>Welcome to Our E-Hospital</h1>
+        <p>Providing quality healthcare at your fingertips.</p>
+    </header>
+    <section class="about-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>For over 18 years, People's Hospital has been a pillar of healthcare in Hyderabad. Our board-certified doctors and advanced technology ensure exceptional care. </p>
+            <p>We are proud to serve our community and look forward to partnering with you on your healthcare journey. We combine expertise with compassion, focusing on your individual needs.</p>
+        </div>
+    </section>
+    <section class="address-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <i class="fas fa-phone-alt"></i>
+                <p>+91 12345 67890</p>
+                <i class="fas fa-map-marker-alt"></i>
+                <p>123, Hospital Street, Hyderabad</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 E-Hospital Management. All rights reserved.</p>
+    </footer>
+    <script>
+        // JavaScript function to navigate to selected URL
+        function navigateToPage2() {
+            var dropdown = document.getElementById('pageSelect2');
+            var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+            if (selectedOption !== '') {
+                window.location.href = selectedOption; // Navigate to selected URL
+            }
+        }
+        function navigateToPage3() {
+            var dropdown = document.getElementById('pageSelect3');
+            var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+            if (selectedOption !== '') {
+                window.location.href = selectedOption; // Navigate to selected URL
+            }
+        }
+        function navigateToPage1() {
+            var dropdown = document.getElementById('pageSelect1');
+            var selectedOption = dropdown.options[dropdown.selectedIndex].value;
+            if (selectedOption !== '') {
+                window.location.href = selectedOption; // Navigate to selected URL
+            }
+        }
+    </script>
+</body>
+</html>
