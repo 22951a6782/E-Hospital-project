@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Pharmacy</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            animation: fadeInDown 1s;
+        }
+        header p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s;
+        }
+        label {
+            font-weight: bold;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+        }
+        .medicine-list {
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        .cart {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .cart h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .cart p {
+            margin: 5px 0;
+        }
+        .cart-total {
+            font-weight: bold;
+        }
+        .return-home {
+            position: center;
+            top: 20px;
+            left: 90px;
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="return-home" onclick="window.location.href='hospital.html'">Return to Home</button>
+        <h1>E-Pharmacy</h1>
+        <p>Order medicines conveniently online.</p>
+    </header>
+
+    <section class="disease-selection">
+        <label for="disease">Select Disease:</label>
+        <select id="disease" onchange="populateMedicines()">
+            <option value="" disabled selected>Choose the disease</option>
+            <option value="fever">Fever</option>
+            <option value="cold">Cold</option>
+            <option value="cough">Cough</option>
+            <option value="headache">Headache</option>
+            <option value="body-pains">Body Pains</option>
+            <option value="allergies">Allergies</option>
+            <option value="indigestion">Indigestion</option>
+            <option value="nausea">Nausea</option>
+            <option value="skin-rashes">Skin Rashes</option>
+            <option value="sore-throat">Sore Throat</option>
+            <option value="other">Other</option>
+        </select>
+    </section>
+
+    <section class="medicine-selection">
+        <label for="medicine">Select Medicine:</label>
+        <select id="medicine" onchange="updateCart()">
+            <!-- Options will be populated dynamically based on disease selection -->
+        </select>
+        <div class="medicine-list">
+            <!-- Medicine list will be populated dynamically -->
+        </div>
+    </section>
+
+    <div class="cart">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items">
+            <!-- Selected items will be dynamically added here -->
+        </div>
+        <p class="cart-total">Subtotal: ₹<span id="subtotal">0.00</span></p>
+        <p class="cart-total">Tax (16%): ₹<span id="tax">0.00</span></p>
+        <p class="cart-total">Total: ₹<span id="total">0.00</span></p>
+        <button id="checkout-btn" onclick="checkout()">Proceed to Pay</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 E-Hospital Management. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Example data for medicines (replace with actual data from backend)
+        const medicines = {
+            fever: [
+                { name: 'Paracetamol', dosage: '500mg', price: 10.99 },
+                { name: 'Ibuprofen', dosage: '200mg', price: 8.49 }
+            ],
+            cold: [
+                { name: 'Cetirizine', dosage: '10mg', price: 7.99 },
+                { name: 'Phenylephrine', dosage: '25mg', price: 6.29 }
+            ],
+            cough: [
+                { name: 'Dextromethorphan', dosage: '30mg', price: 9.99 },
+                { name: 'Guaifenesin', dosage: '400mg', price: 11.49 }
+            ],
+            headache: [
+                { name: 'Aspirin', dosage: '100mg', price: 7.49 },
+                { name: 'Acetaminophen', dosage: '500mg', price: 8.99 }
+            ],
+            'body-pains': [
+                { name: 'Naproxen', dosage: '250mg', price: 6.99 },
+                { name: 'Diclofenac', dosage: '50mg', price: 10.49 }
+            ],
+            allergies: [
+                { name: 'Loratadine', dosage: '10mg', price: 12.99 },
+                { name: 'Fexofenadine', dosage: '180mg', price: 14.49 }
+            ],
+            indigestion: [
+                { name: 'Omeprazole', dosage: '20mg', price: 9.99 },
+                { name: 'Ranitidine', dosage: '150mg', price: 7.99 }
+            ],
+            nausea: [
+                { name: 'Ondansetron', dosage: '4mg', price: 13.99 },
+                { name: 'Metoclopramide', dosage: '10mg', price: 10.49 }
+            ],
+            'skin-rashes': [
+                { name: 'Hydrocortisone', dosage: '1%', price: 8.99 },
+                { name: 'Clobetasol', dosage: '0.05%', price: 11.99 }
+            ],
+            'sore-throat': [
+                { name: 'Chlorhexidine', dosage: '0.12%', price: 6.99 },
+                { name: 'Benzydamine', dosage: '0.15%', price: 9.49 }
+            ],
+            other: [
+                { name: 'Other Medicine', dosage: '500mg', price: 12.99 }
+            ]
+        };
+        function populateMedicines() {
+        const disease = document.getElementById('disease').value;
+        const medicineDropdown = document.getElementById('medicine');
+        const medicineList = document.querySelector('.medicine-list');
+        medicineDropdown.innerHTML = '';
+        medicineList.innerHTML = '';
+
+        if (medicines[disease]) {
+            medicines[disease].forEach(medicine => {
+                const option = document.createElement('option');
+                option.text = `${medicine.name} - ${medicine.dosage} - ₹${medicine.price.toFixed(2)}`;
+                option.value = JSON.stringify(medicine); // Store medicine object as value
+                medicineDropdown.appendChild(option);
+
+                const listItem = document.createElement('div');
+                listItem.textContent = `${medicine.name} - ${medicine.dosage} - ₹${medicine.price.toFixed(2)}`;
+                medicineList.appendChild(listItem);
+            });
+        }
+    }
+
+    // Function to update shopping cart and totals
+    function updateCart() {
+        const selectedMedicine = JSON.parse(document.getElementById('medicine').value);
+        const cartItems = document.getElementById('cart-items');
+        const subtotal = document.getElementById('subtotal');
+        const tax = document.getElementById('tax');
+        const total = document.getElementById('total');
+
+        // Display selected medicine in cart
+        const item = document.createElement('div');
+        item.textContent = `${selectedMedicine.name} - ${selectedMedicine.dosage} - ₹${selectedMedicine.price.toFixed(2)}`;
+        cartItems.appendChild(item);
+
+        // Calculate subtotal, tax, and total
+        let subtotalAmount = parseFloat(subtotal.textContent); // Convert to number
+        subtotalAmount += selectedMedicine.price;
+        subtotal.textContent = subtotalAmount.toFixed(2);
+
+        let taxAmount = subtotalAmount * 0.16; // 16% tax
+        tax.textContent = taxAmount.toFixed(2);
+
+        let totalAmount = subtotalAmount + taxAmount;
+        total.textContent = totalAmount.toFixed(2);
+    }
+
+    // Function to simulate checkout process
+    function checkout() {
+        alert('Proceeding to payment. Simulated checkout process.');
+        // You can add further processing logic here, e.g., redirecting to a payment gateway or confirming order.
+    }
+</script>
+</body>
+</html>
